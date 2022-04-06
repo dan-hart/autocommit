@@ -4,8 +4,6 @@ Are you tired of having to come up with a commit message when you make such a tr
 
 This little CLI script automatically generates a commit message based on the Git diff. It compares word-by-word and deduplicates identical changes.
 
-### &rarr; [See commits committed by autocommit](https://github.com/search?q=committer%3Aautocommit-cli%5Bbot%5D&type=Commits)
-
 ## Installation
 
 I haven't published this as a Gem yet, so you have to clone the repository and install by yourself. Ruby is needed.
