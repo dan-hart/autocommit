@@ -8,7 +8,7 @@ diff.files.each do |file|
     del_buf = nil
     flush_del_buf = -> {
       if del_buf
-        out << "-- #{del_buf.content[1..-1].strip}"
+        out << "Remove #{del_buf.content[1..-1].strip}"
         del_buf = nil
       end
     }
@@ -16,10 +16,10 @@ diff.files.each do |file|
       text = line.content[1..-1].strip
       if line.content[0] == '+' && !text.empty?
         if del_buf
-          out << "> #{del_buf.content[1..-1].strip} ⇒ #{text}"
+          out << "Switch #{del_buf.content[1..-1].strip} to #{text}"
           del_buf = nil
         else
-          out << "+ #{text}"
+          out << "Add #{text}"
         end
       elsif line.content[0] == '-' && !text.empty?
         flush_del_buf[]
@@ -35,7 +35,7 @@ end
 raise "Cannot parse changes" if out.length == 0
 
 prefix = ENV['AUTOCOMMIT_PREFIX'] || ''
-commit_message = "#{prefix}#{prefix.empty? ? '' : ' '}#{out.uniq.join('; ')}"
+commit_message = "#{prefix}#{prefix.empty? ? '' : ' '}#{out.uniq.join(', ')}"
 puts commit_message
 if !ARGV.include?('-f')
   puts

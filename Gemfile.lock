@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    git_diff (0.4.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  git_diff
+
+BUNDLED WITH
+   1.17.2
