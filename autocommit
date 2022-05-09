@@ -43,4 +43,6 @@ if !ARGV.include?('-f')
   $stdin.gets
 end
 system "git", "commit", "-a", "-m", commit_message or raise "Cannot commit"
-system "git", "push" or raise "Cannot push"
+if ARGV.include?('-p')
+  system "git", "push" or raise "Cannot push"
+end
